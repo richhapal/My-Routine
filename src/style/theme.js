@@ -5,12 +5,12 @@ const config = {
      useSystemColorMode: false,
 };
 const theme = extendTheme({
+     config,
      colors: {
           primary: "#ffce0a",
      },
      components: {
           Button,
-          config,
      },
 });
 
