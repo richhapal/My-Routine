@@ -1,8 +1,10 @@
 import React from "react";
-import { Box, Text, Flex, Button } from "@chakra-ui/react";
+import { Box, Text, Flex, Button, IconButton } from "@chakra-ui/react";
+import { DeleteIcon, SearchIcon } from "@chakra-ui/icons";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { taskAction } from "../redux-store/taskSlice";
+import { IconContext } from "react-icons";
 
 export const ShowTask = (props) => {
      const dispatch = useDispatch();
@@ -28,14 +30,26 @@ export const ShowTask = (props) => {
                >
                     <AiFillEdit />
                </Button>
-               <Button
+               <IconButton
+                    variant="primary"
+                    size={["sm", "md"]}
+                    id={props.id}
+                    onClick={deleteHandler}
+                    icon={<DeleteIcon />}
+               />
+               {/* <AiFillDelete />
+               </IconButton> */}
+
+               {/* <IconButton icon={<DeleteIcon />} /> */}
+
+               {/* <Button
                     variant="primary"
                     size={["sm", "md"]}
                     onClick={deleteHandler}
                     id={props.id}
                >
                     <AiFillDelete />
-               </Button>
+               </Button> */}
           </Flex>
      );
 };

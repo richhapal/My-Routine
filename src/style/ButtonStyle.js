@@ -1,10 +1,10 @@
 export const ButtonStyle = {
      variants: {
-          primary: (colorMode) => ({
+          primary: (props) => ({
                bg: "primary",
                color: "black",
                _hover: {
-                    bg: "black",
+                    bg: props.colorMode === "dark" ? "white" : "black",
                     border: "1px solid",
                     borderColor: "primary",
                     color: "primary",
