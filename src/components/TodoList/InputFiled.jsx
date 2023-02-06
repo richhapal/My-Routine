@@ -12,7 +12,7 @@ import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import { FaPlus } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-import { taskAction } from "../redux-store/taskSlice";
+import { taskAction } from "../../redux-store/taskSlice";
 
 const InputFiled = () => {
      const taskValue = useSelector((state) => state.taskReducer.taskValue);

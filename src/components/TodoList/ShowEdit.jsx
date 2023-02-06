@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Text, Flex, Button, Input, Spacer } from "@chakra-ui/react";
 import { MdDone, MdCancel } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { taskAction } from "../redux-store/taskSlice";
+import { taskAction } from "../../redux-store/taskSlice";
 export const ShowEdit = (props) => {
      const taskValue = useSelector((state) => state.taskReducer.updateValue);
      const dispatch = useDispatch();

@@ -2,7 +2,7 @@ import { Box } from "@chakra-ui/react";
 
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { taskAction } from "../redux-store/taskSlice";
+import { taskAction } from "../../redux-store/taskSlice";
 import { ShowTask } from "./ShowTask";
 import { ShowEdit } from "./ShowEdit";
 const TaskItem = (props) => {

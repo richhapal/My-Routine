@@ -4,7 +4,7 @@ import { NoTask } from "./NoTask";
 import { useDispatch, useSelector } from "react-redux";
 import TaskItem from "./TaskItem";
 import { useEffect } from "react";
-import { taskAction } from "../redux-store/taskSlice";
+import { taskAction } from "../../redux-store/taskSlice";
 let first = true;
 function TaskList() {
      const taskArray = useSelector((state) => state.taskReducer.taskArray);

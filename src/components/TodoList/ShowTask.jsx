@@ -3,7 +3,7 @@ import { Box, Text, Flex, Button, IconButton } from "@chakra-ui/react";
 import { DeleteIcon, SearchIcon } from "@chakra-ui/icons";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { taskAction } from "../redux-store/taskSlice";
+import { taskAction } from "../../redux-store/taskSlice";
 import { IconContext } from "react-icons";
 
 export const ShowTask = (props) => {
