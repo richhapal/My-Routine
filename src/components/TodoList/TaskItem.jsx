@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, useColorMode } from "@chakra-ui/react";
 
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,6 +6,7 @@ import { taskAction } from "../../redux-store/taskSlice";
 import { ShowTask } from "./ShowTask";
 import { ShowEdit } from "./ShowEdit";
 const TaskItem = (props) => {
+     const { colorMode } = useColorMode();
      const isEdit = useSelector((state) => state.taskReducer.isEdit);
      const dispatch = useDispatch();
 
@@ -15,15 +16,26 @@ const TaskItem = (props) => {
      };
      return (
           <Box
-               border="2px solid"
-               borderColor="primary"
+               borderColor={"red"}
+               bgGradient="linear(to-br, #E80A89, #F15B2A)"
+               //      mx={["1"]}
                borderRadius="md"
-               width={["sm", "md", "lg", "xl"]}
-               mx={["1"]}
-               p="2"
+               p="3px"
           >
-               {isEdit !== props.id && <ShowTask {...props} />}
-               {isEdit === props.id && <ShowEdit {...props} />}
+               <Box
+                    border="3px solid"
+                    // borderColor="red"
+                    borderColor="transparent"
+                    bg={colorMode === "dark" ? "black" : "white"}
+                    borderRadius="md"
+                    width={["sm", "md", "lg", "xl"]}
+                    p="2"
+               >
+                    <Box>
+                         {isEdit !== props.id && <ShowTask {...props} />}
+                         {isEdit === props.id && <ShowEdit {...props} />}
+                    </Box>
+               </Box>
           </Box>
      );
 };

@@ -28,28 +28,29 @@ export const ShowTask = (props) => {
                     onClick={editHandler}
                     id={props.id}
                >
-                    <AiFillEdit />
+                    {/* <AiFillEdit /> */}EDIT
                </Button>
-               <IconButton
+               {/* <IconButton
                     variant="primary"
                     size={["sm", "md"]}
                     id={props.id}
                     onClick={deleteHandler}
                     icon={<DeleteIcon />}
-               />
+               /> */}
                {/* <AiFillDelete />
                </IconButton> */}
 
                {/* <IconButton icon={<DeleteIcon />} /> */}
 
-               {/* <Button
+               <Button
                     variant="primary"
                     size={["sm", "md"]}
                     onClick={deleteHandler}
                     id={props.id}
                >
-                    <AiFillDelete />
-               </Button> */}
+                    {/* <AiFillDelete /> */}
+                    DELETE
+               </Button>
           </Flex>
      );
 };

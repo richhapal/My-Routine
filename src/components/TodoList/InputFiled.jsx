@@ -7,6 +7,7 @@ import {
      Center,
      Button,
      Flex,
+     useColorMode,
 } from "@chakra-ui/react";
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
@@ -15,6 +16,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { taskAction } from "../../redux-store/taskSlice";
 
 const InputFiled = () => {
+     const { colorMode, toggleColorMode } = useColorMode();
      const taskValue = useSelector((state) => state.taskReducer.taskValue);
      const dispatch = useDispatch();
      const taskHandler = () => {
@@ -33,8 +35,15 @@ const InputFiled = () => {
                               <Input
                                    type="text"
                                    placeholder="Enter Your Task"
+                                   _placeholder={{
+                                        color:
+                                             colorMode === "dark"
+                                                  ? "primary"
+                                                  : "black",
+                                        fontWeight: "bold",
+                                   }}
                                    border="2px solid"
-                                   borderColor="primary"
+                                   // borderColor="primary"
                                    value={taskValue}
                                    onChange={taskValueHandler}
                               />

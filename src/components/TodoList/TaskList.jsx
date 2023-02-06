@@ -35,7 +35,7 @@ function TaskList() {
      }, [taskArray]);
 
      return (
-          <Box m="auto" py="5" mx="2">
+          <Box m="auto" py="2" mx="2">
                <Center>
                     <Flex direction="column" gap="5">
                          {taskArray.length !== 0 &&
