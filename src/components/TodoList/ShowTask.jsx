@@ -22,12 +22,7 @@ export const ShowTask = (props) => {
                     {props.value}
                </Text>
 
-               <Button
-                    variant="primary"
-                    size={["sm", "md"]}
-                    onClick={editHandler}
-                    id={props.id}
-               >
+               <Button variant="primary" size={["sm", "md"]} onClick={editHandler} id={props.id}>
                     {/* <AiFillEdit /> */}EDIT
                </Button>
                {/* <IconButton
@@ -42,12 +37,7 @@ export const ShowTask = (props) => {
 
                {/* <IconButton icon={<DeleteIcon />} /> */}
 
-               <Button
-                    variant="primary"
-                    size={["sm", "md"]}
-                    onClick={deleteHandler}
-                    id={props.id}
-               >
+               <Button variant="primary" size={["sm", "md"]} onClick={deleteHandler} id={props.id}>
                     {/* <AiFillDelete /> */}
                     DELETE
                </Button>

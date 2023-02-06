@@ -10,23 +10,16 @@ function TaskList() {
      const taskArray = useSelector((state) => state.taskReducer.taskArray);
      const dispatch = useDispatch();
      useEffect(() => {
-          let taskFromLocal = JSON.parse(
-               window.localStorage.getItem("taskArray")
-          );
+          let taskFromLocal = JSON.parse(window.localStorage.getItem("taskArray"));
           if (!taskFromLocal) {
                window.localStorage.setItem("taskArray", JSON.stringify([]));
-               taskFromLocal = JSON.parse(
-                    window.localStorage.getItem("taskArray")
-               );
+               taskFromLocal = JSON.parse(window.localStorage.getItem("taskArray"));
           }
           console.log(taskFromLocal);
           if (taskFromLocal.length !== 0) {
                dispatch(taskAction.updateTaskArray(taskFromLocal));
           } else {
-               window.localStorage.setItem(
-                    "taskArray",
-                    JSON.stringify(taskArray)
-               );
+               window.localStorage.setItem("taskArray", JSON.stringify(taskArray));
           }
      }, []);
 
@@ -38,14 +31,7 @@ function TaskList() {
           <Box m="auto" py="2" mx="2">
                <Center>
                     <Flex direction="column" gap="5">
-                         {taskArray.length !== 0 &&
-                              taskArray.map((item) => (
-                                   <TaskItem
-                                        key={item.id}
-                                        id={item.id}
-                                        {...item}
-                                   />
-                              ))}
+                         {taskArray.length !== 0 && taskArray.map((item) => <TaskItem key={item.id} id={item.id} {...item} />)}
                          {taskArray.length == 0 && <NoTask />}
                     </Flex>
                </Center>

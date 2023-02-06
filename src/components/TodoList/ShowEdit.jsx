@@ -17,12 +17,7 @@ export const ShowEdit = (props) => {
      };
 
      return (
-          <Flex
-               gap={[1, 1, 2, 3]}
-               justifyContent="center"
-               alignItems="center"
-               w="100%"
-          >
+          <Flex gap={[1, 1, 2, 3]} justifyContent="center" alignItems="center" w="100%">
                {/* <Text>{props.value}</Text> */}
                <Box flex="1">
                     <Input
@@ -36,22 +31,11 @@ export const ShowEdit = (props) => {
                </Box>
                {/* <Spacer /> */}
                <Box>
-                    <Button
-                         variant="primary"
-                         size={["sm", "md"]}
-                         id={props.id}
-                         mx={1}
-                         onClick={doneHandler}
-                    >
+                    <Button variant="primary" size={["sm", "md"]} id={props.id} mx={1} onClick={doneHandler}>
                          <MdDone />
                     </Button>
 
-                    <Button
-                         variant="primary"
-                         size={["sm", "md"]}
-                         id={props.id}
-                         onClick={cancelHandler}
-                    >
+                    <Button variant="primary" size={["sm", "md"]} id={props.id} onClick={cancelHandler}>
                          <MdCancel />
                     </Button>
                </Box>

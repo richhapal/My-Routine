@@ -5,11 +5,7 @@ export const NoTask = () => {
      return (
           <Box my={6} m="auto">
                <Center>
-                    <Text
-                         color="primary"
-                         fontSize={["2xl", "3xl"]}
-                         fontWeight={["bold", "extrabold"]}
-                    >
+                    <Text color="primary" fontSize={["2xl", "3xl"]} fontWeight={["bold", "extrabold"]}>
                          No Task
                     </Text>
                </Center>

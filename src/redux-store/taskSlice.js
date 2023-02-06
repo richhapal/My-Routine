@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+     addTodoListTask: false,
      taskValue: "",
      updateValue: "",
      isEdit: null,
@@ -18,6 +19,12 @@ const task = createSlice({
                     state.taskValue = "";
                }
           },
+          openTodoListTaskBox(state) {
+               state.addTodoListTask = true;
+          },
+          closeTodoListTaskBox(state) {
+               state.addTodoListTask = false;
+          },
           updateTaskArray(state, actions) {
                state.taskArray = actions.payload;
           },
@@ -28,16 +35,12 @@ const task = createSlice({
           },
           deleteTask(state, actions) {
                const id = actions.payload.id;
-               const deleteTask = state.taskArray.filter(
-                    (item) => item.id !== id
-               );
+               const deleteTask = state.taskArray.filter((item) => item.id !== id);
                state.taskArray = deleteTask;
           },
           editTask(state, actions) {
                state.isEdit = actions.payload;
-               const findValue = state.taskArray.find(
-                    (item) => item.id === actions.payload
-               );
+               const findValue = state.taskArray.find((item) => item.id === actions.payload);
                state.updateValue = findValue.value;
           },
           cancelEdit(state) {
