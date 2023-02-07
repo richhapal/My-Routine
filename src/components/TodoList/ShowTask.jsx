@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Text, Flex, Button, IconButton } from "@chakra-ui/react";
+import { Box, Text, Flex, Button, IconButton, Badge } from "@chakra-ui/react";
 import { DeleteIcon, SearchIcon } from "@chakra-ui/icons";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,38 +9,39 @@ import { IconContext } from "react-icons";
 export const ShowTask = (props) => {
      const dispatch = useDispatch();
 
-     const deleteHandler = (e) => {
-          console.log(e.target.id);
-          dispatch(taskAction.deleteTask({ id: e.target.id }));
+     const deleteHandler = (event, priority) => {
+          dispatch(taskAction.deleteTask({ id: event.target.id, priority: priority }));
      };
-     const editHandler = (e) => {
-          dispatch(taskAction.editTask(e.target.id));
+     const editHandler = (e, priority) => {
+          dispatch(taskAction.editTask({ id: e.target.id, priority: priority }));
      };
      return (
-          <Flex gap={[1, 1, 2, 3]} justifyContent="center" alignItems="center">
-               <Text flex="1" fontWeight={["semibold", "bold"]}>
-                    {props.value}
-               </Text>
+          <Flex gap={[1, 1, 2, 3]} flexDir="column">
+               <Flex gap={[1, 1, 2, 3]} justifyContent="center">
+                    {props.time && (
+                         <Badge colorScheme="teal" variant="solid">
+                              {props.time}
+                         </Badge>
+                    )}
+                    <Badge bg={props.priority === "high" ? "#00ff1fd4" : "#6c6c6c6e"} variant="solid">
+                         {props.priority}
+                    </Badge>
+                    <Badge>{props.date}</Badge>
+               </Flex>
 
-               <Button variant="primary" size={["sm", "md"]} onClick={editHandler} id={props.id}>
-                    {/* <AiFillEdit /> */}EDIT
-               </Button>
-               {/* <IconButton
-                    variant="primary"
-                    size={["sm", "md"]}
-                    id={props.id}
-                    onClick={deleteHandler}
-                    icon={<DeleteIcon />}
-               /> */}
-               {/* <AiFillDelete />
-               </IconButton> */}
+               <Flex gap={[1, 1, 2, 3]}>
+                    <Text flex="1" fontWeight={["semibold", "bold"]} wordBreak>
+                         {props.value}
+                    </Text>
 
-               {/* <IconButton icon={<DeleteIcon />} /> */}
+                    <Button variant="primary" size={["sm", "md"]} onClick={(e) => editHandler(e, props.priority)} id={props.id}>
+                         EDIT
+                    </Button>
 
-               <Button variant="primary" size={["sm", "md"]} onClick={deleteHandler} id={props.id}>
-                    {/* <AiFillDelete /> */}
-                    DELETE
-               </Button>
+                    <Button variant="primary" size={["sm", "md"]} onClick={(e) => deleteHandler(e, props.priority)} id={props.id}>
+                         DELETE
+                    </Button>
+               </Flex>
           </Flex>
      );
 };

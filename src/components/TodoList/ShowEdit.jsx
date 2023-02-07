@@ -9,8 +9,8 @@ export const ShowEdit = (props) => {
      const cancelHandler = () => {
           dispatch(taskAction.cancelEdit());
      };
-     const doneHandler = (e) => {
-          dispatch(taskAction.updateEditedTask(e.target.id));
+     const doneHandler = (e, priority) => {
+          dispatch(taskAction.updateEditedTask({ id: e.target.id, priority: priority }));
      };
      const taskValueHandler = (e) => {
           dispatch(taskAction.readUpdateTask(e.target.value));
@@ -20,18 +20,11 @@ export const ShowEdit = (props) => {
           <Flex gap={[1, 1, 2, 3]} justifyContent="center" alignItems="center" w="100%">
                {/* <Text>{props.value}</Text> */}
                <Box flex="1">
-                    <Input
-                         type="text"
-                         variant="flushed"
-                         value={taskValue}
-                         size={["sm", "md"]}
-                         // value={taskValue}
-                         onChange={taskValueHandler}
-                    />
+                    <Input type="text" variant="flushed" value={taskValue} size={["sm", "md"]} onChange={taskValueHandler} />
                </Box>
                {/* <Spacer /> */}
                <Box>
-                    <Button variant="primary" size={["sm", "md"]} id={props.id} mx={1} onClick={doneHandler}>
+                    <Button variant="primary" size={["sm", "md"]} id={props.id} mx={1} onClick={(e) => doneHandler(e, props.priority)}>
                          <MdDone />
                     </Button>
 

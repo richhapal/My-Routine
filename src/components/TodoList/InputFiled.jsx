@@ -1,6 +1,6 @@
 import { Box, Input, InputGroup, FormLabel, FormControl, Center, Button, Flex, useColorMode, Checkbox, Select, Text, VStack, HStack } from "@chakra-ui/react";
 import React from "react";
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuid } from "uuid";
 import { FaPlus } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { taskAction } from "../../redux-store/taskSlice";
@@ -9,11 +9,21 @@ import { Form } from "react-router-dom";
 const InputFiled = () => {
      const { colorMode, toggleColorMode } = useColorMode();
      const taskValue = useSelector((state) => state.taskReducer.taskValue);
+     const taskPriority = useSelector((state) => state.taskReducer.taskPriority);
      const addTodoListTask = useSelector((state) => state.taskReducer.addTodoListTask);
      const dispatch = useDispatch();
      const taskHandler = () => {
-          const id = uuidv4();
-          dispatch(taskAction.addTask({ id: id }));
+          const id = uuid();
+          const date = new Date().toDateString();
+          dispatch(taskAction.addTask({ id: id, date: date }));
+     };
+
+     const timeAlertHandler = (e) => {
+          dispatch(taskAction.addTimeAlert(e.target.value));
+     };
+
+     const taskPriorityHandler = (e) => {
+          dispatch(taskAction.updateTaskPriority(e.target.value));
      };
      const taskValueHandler = (e) => {
           dispatch(taskAction.readTask(e.target.value));
@@ -47,6 +57,9 @@ const InputFiled = () => {
                                              <FormControl my={2}>
                                                   <FormLabel>Enter Task</FormLabel>
                                                   <Input
+                                                       value={taskValue}
+                                                       maxLength="35"
+                                                       onChange={taskValueHandler}
                                                        type="text"
                                                        width={["sm", "md", "lg", "xl"]}
                                                        placeholder="Add Your Task"
@@ -57,24 +70,24 @@ const InputFiled = () => {
                                                        borderColor={colorMode === "dark" ? "white" : "black"}
                                                   />
                                              </FormControl>
+
                                              <FormControl my={2}>
                                                   <FormLabel>Task Priority</FormLabel>
-                                                  <Select borderColor={colorMode === "dark" ? "white" : "black"}>
+                                                  <Select value={taskPriority} borderColor={colorMode === "dark" ? "white" : "black"} onChange={taskPriorityHandler}>
                                                        <option value="low">Low</option>
                                                        <option value="medium">Medium</option>
                                                        <option value="high">High</option>
                                                   </Select>
                                              </FormControl>
-                                             {
-                                                  //  If priority===high then show time
-                                             }
-                                             <FormControl>
-                                                  <FormLabel>Time Alert</FormLabel>
-                                                  <Input type="time" borderColor={colorMode === "dark" ? "white" : "black"} />
-                                             </FormControl>
+                                             {taskPriority === "high" && (
+                                                  <FormControl>
+                                                       <FormLabel>Time Alert</FormLabel>
+                                                       <Input onChange={timeAlertHandler} type="time" borderColor={colorMode === "dark" ? "white" : "black"} />
+                                                  </FormControl>
+                                             )}
 
                                              <HStack my={2}>
-                                                  <Button variant="primary" w="50%">
+                                                  <Button variant="primary" w="50%" onClick={taskHandler}>
                                                        UPDATE
                                                   </Button>
                                                   <Button variant="primary" w="50%" onClick={closeAddTodoTaskHandler}>

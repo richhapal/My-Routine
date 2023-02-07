@@ -8,6 +8,7 @@ import { ShowEdit } from "./ShowEdit";
 const TaskItem = (props) => {
      const { colorMode } = useColorMode();
      const isEdit = useSelector((state) => state.taskReducer.isEdit);
+     const priority = useSelector((state) => state.taskReducer.priority);
      const dispatch = useDispatch();
 
      const deleteHandler = (e) => {
@@ -20,6 +21,7 @@ const TaskItem = (props) => {
                     <Box>
                          {isEdit !== props.id && <ShowTask {...props} />}
                          {isEdit === props.id && <ShowEdit {...props} />}
+                         {/* && priority === props.priority */}
                     </Box>
                </Box>
           </Box>
