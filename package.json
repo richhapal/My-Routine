@@ -1,0 +1,54 @@
+{
+     "name": "todo_frontend",
+     "version": "0.1.0",
+     "private": true,
+     "dependencies": {
+          "@chakra-ui/icons": "^2.0.17",
+          "@chakra-ui/react": "^2.4.9",
+          "@emotion/react": "^11.10.5",
+          "@emotion/styled": "^11.10.5",
+          "@fontsource/orbitron": "^4.5.11",
+          "@reduxjs/toolkit": "^1.9.2",
+          "@testing-library/jest-dom": "^5.16.5",
+          "@testing-library/react": "^13.4.0",
+          "@testing-library/user-event": "^13.5.0",
+          "build": "^0.1.4",
+          "framer-motion": "^8.5.4",
+          "react": "^18.2.0",
+          "react-dom": "^18.2.0",
+          "react-icons": "^4.7.1",
+          "react-redux": "^8.0.5",
+          "react-router-dom": "^6.8.0",
+          "react-scripts": "^5.0.1",
+          "uuidv4": "^6.2.13",
+          "web-vitals": "^2.1.4"
+     },
+     "scripts": {
+          "start": " react-scripts start",
+          "build": "react-scripts build",
+          "test": "react-scripts test",
+          "eject": "react-scripts eject"
+     },
+     "eslintConfig": {
+          "extends": [
+               "react-app",
+               "react-app/jest"
+          ]
+     },
+     "browserslist": {
+          "production": [
+               ">0.2%",
+               "not dead",
+               "not op_mini all"
+          ],
+          "development": [
+               "last 1 chrome version",
+               "last 1 firefox version",
+               "last 1 safari version"
+          ]
+     },
+     "main": "index.js",
+     "keywords": [],
+     "author": "",
+     "license": "ISC"
+}
