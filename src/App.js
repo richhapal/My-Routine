@@ -1,11 +1,9 @@
 import "./App.css";
 import { Fragment } from "react";
 import Navigation from "./components/MainNavigation/Navigation";
-import InputFiled from "./components/TodoList/InputFiled";
-import TaskList from "./components/TodoList/TaskList";
-import TaskCategory from "./components/MainNavigation/TaskCategory";
 import TaskPanel from "./components/TaskPanel/TaskPanel";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import MainTodoHandle from "./components/TodoList/MainTodoHandle";
 
 const routers = createBrowserRouter([
      {
@@ -14,12 +12,7 @@ const routers = createBrowserRouter([
           children: [
                {
                     path: "/",
-                    element: (
-                         <TaskPanel>
-                              <InputFiled />
-                              <TaskList />
-                         </TaskPanel>
-                    ),
+                    element: <MainTodoHandle />,
                },
                {
                     path: "/dailyroutine",

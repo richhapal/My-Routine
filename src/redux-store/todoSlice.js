@@ -56,8 +56,17 @@ const task = createSlice({
           updateTaskPriority(state, actions) {
                state.taskPriority = actions.payload;
           },
-          updateTaskArray(state, actions) {
-               state.taskArray = actions.payload;
+          updateAllTodosFromLocalStorage(state, actions) {
+               const priority = actions.payload.priority;
+               const arr = actions.payload.arr;
+               switch (priority) {
+                    case "high":
+                         state.todoHigh = arr;
+                    case "medium":
+                         state.todoMedium = arr;
+                    default:
+                         state.todoLow = arr;
+               }
           },
           readTask(state, actions) {
                state.taskValue = actions.payload;
@@ -116,24 +125,24 @@ const task = createSlice({
                          for (let i = 0; i < state.todoHigh.length; i++) {
                               if (state.todoHigh[i].id === id) {
                                    state.todoHigh[i].value = state.updateValue;
+                                   break;
                               }
-                              break;
                          }
                          break;
                     case "medium":
                          for (let i = 0; i < state.todoMedium.length; i++) {
                               if (state.todoMedium[i].id === id) {
                                    state.todoMedium[i].value = state.updateValue;
+                                   break;
                               }
-                              break;
                          }
                          break;
                     default:
                          for (let i = 0; i < state.todoLow.length; i++) {
                               if (state.todoLow[i].id === id) {
                                    state.todoLow[i].value = state.updateValue;
+                                   break;
                               }
-                              break;
                          }
                          break;
                }

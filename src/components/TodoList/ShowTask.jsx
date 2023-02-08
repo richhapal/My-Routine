@@ -1,10 +1,7 @@
 import React from "react";
 import { Box, Text, Flex, Button, IconButton, Badge } from "@chakra-ui/react";
-import { DeleteIcon, SearchIcon } from "@chakra-ui/icons";
-import { AiFillEdit, AiFillDelete } from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
-import { taskAction } from "../../redux-store/taskSlice";
-import { IconContext } from "react-icons";
+import { useDispatch } from "react-redux";
+import { taskAction } from "../../redux-store/todoSlice";
 
 export const ShowTask = (props) => {
      const dispatch = useDispatch();

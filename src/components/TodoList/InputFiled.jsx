@@ -3,14 +3,14 @@ import React from "react";
 import { v4 as uuid } from "uuid";
 import { FaPlus } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-import { taskAction } from "../../redux-store/taskSlice";
+import { taskAction } from "../../redux-store/todoSlice";
 import { Form } from "react-router-dom";
 
 const InputFiled = () => {
      const { colorMode, toggleColorMode } = useColorMode();
-     const taskValue = useSelector((state) => state.taskReducer.taskValue);
-     const taskPriority = useSelector((state) => state.taskReducer.taskPriority);
-     const addTodoListTask = useSelector((state) => state.taskReducer.addTodoListTask);
+     const taskValue = useSelector((state) => state.todoReducer.taskValue);
+     const taskPriority = useSelector((state) => state.todoReducer.taskPriority);
+     const addTodoListTask = useSelector((state) => state.todoReducer.addTodoListTask);
      const dispatch = useDispatch();
      const taskHandler = () => {
           const id = uuid();

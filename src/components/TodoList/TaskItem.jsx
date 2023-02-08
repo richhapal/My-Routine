@@ -2,13 +2,13 @@ import { Box, useColorMode } from "@chakra-ui/react";
 
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { taskAction } from "../../redux-store/taskSlice";
+import { taskAction } from "../../redux-store/todoSlice";
 import { ShowTask } from "./ShowTask";
 import { ShowEdit } from "./ShowEdit";
 const TaskItem = (props) => {
      const { colorMode } = useColorMode();
-     const isEdit = useSelector((state) => state.taskReducer.isEdit);
-     const priority = useSelector((state) => state.taskReducer.priority);
+     const isEdit = useSelector((state) => state.todoReducer.isEdit);
+     const priority = useSelector((state) => state.todoReducer.priority);
      const dispatch = useDispatch();
 
      const deleteHandler = (e) => {

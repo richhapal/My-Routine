@@ -1,0 +1,7 @@
+.activeLink {
+     background: linear-gradient(to bottom right, #e80a89, #f15b2a);
+     background-clip: text;
+     -webkit-background-clip: text;
+     color: transparent;
+     font-weight: 900;
+}
