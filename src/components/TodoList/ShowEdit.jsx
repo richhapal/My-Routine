@@ -20,15 +20,15 @@ export const ShowEdit = (props) => {
           <Flex gap={[1, 1, 2, 3]} justifyContent="center" alignItems="center" w="100%">
                {/* <Text>{props.value}</Text> */}
                <Box flex="1">
-                    <Input type="text" variant="flushed" value={taskValue} size={["sm", "md"]} onChange={taskValueHandler} />
+                    <Input type="text" maxLength="35" variant="flushed" value={taskValue} size={["sm", "md"]} onChange={taskValueHandler} />
                </Box>
                {/* <Spacer /> */}
                <Box>
-                    <Button variant="primary" size={["sm", "md"]} id={props.id} mx={1} onClick={(e) => doneHandler(e, props.priority)}>
+                    <Button variant="primary" size={["xs", "sm", "md"]} id={props.id} mx={1} onClick={(e) => doneHandler(e, props.priority)}>
                          <MdDone />
                     </Button>
 
-                    <Button variant="primary" size={["sm", "md"]} id={props.id} onClick={cancelHandler}>
+                    <Button variant="primary" size={["xs", "sm", "md"]} id={props.id} onClick={cancelHandler}>
                          <MdCancel />
                     </Button>
                </Box>

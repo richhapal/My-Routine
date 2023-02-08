@@ -17,7 +17,7 @@ const TaskItem = (props) => {
      };
      return (
           <Box bgGradient="linear(to-br, #E80A89, #F15B2A)" borderRadius="md" p="3px">
-               <Box border="3px solid" borderColor="transparent" bg={colorMode === "dark" ? "black" : "white"} borderRadius="md" width={["sm", "md", "lg", "xl"]} p="2">
+               <Box border="3px solid" borderColor="transparent" bg={colorMode === "dark" ? "black" : "white"} borderRadius="md" width={["96vw", "sm", "md", "lg", "xl"]} p="2">
                     <Box>
                          {isEdit !== props.id && <ShowTask {...props} />}
                          {isEdit === props.id && <ShowEdit {...props} />}

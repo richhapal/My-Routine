@@ -44,7 +44,7 @@ const InputFiled = () => {
                               </Button>
                          )}
                          {addTodoListTask === true && (
-                              <Box bgGradient="linear(to-br, #E80A89, #F15B2A)" borderRadius="md" p="3px" my={3}>
+                              <Box bgGradient="linear(to-br, #E80A89, #F15B2A)" borderRadius="md" p="3px" my={3} w={["98vw", "auto"]}>
                                    <Box
                                         px="3"
                                         border="2px solid"
@@ -53,7 +53,7 @@ const InputFiled = () => {
                                         borderColor="transparent"
                                         bg={colorMode === "dark" ? "black" : "white"}
                                    >
-                                        <Box width={["sm", "md", "lg", "xl"]}>
+                                        <Box width={["100%", "sm", "md", "lg", "xl"]}>
                                              <FormControl my={2}>
                                                   <FormLabel>Enter Task</FormLabel>
                                                   <Input
@@ -61,7 +61,7 @@ const InputFiled = () => {
                                                        maxLength="35"
                                                        onChange={taskValueHandler}
                                                        type="text"
-                                                       width={["sm", "md", "lg", "xl"]}
+                                                       width={["100%", "sm", "md", "lg", "xl"]}
                                                        placeholder="Add Your Task"
                                                        _placeholder={{
                                                             color: colorMode === "dark" ? "white" : "black",

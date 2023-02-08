@@ -27,15 +27,15 @@ export const ShowTask = (props) => {
                </Flex>
 
                <Flex gap={[1, 1, 2, 3]}>
-                    <Text flex="1" fontWeight={["semibold", "bold"]} wordBreak>
+                    <Text flex="1" fontWeight={["semibold", "bold"]}>
                          {props.value}
                     </Text>
 
-                    <Button variant="primary" size={["sm", "md"]} onClick={(e) => editHandler(e, props.priority)} id={props.id}>
+                    <Button variant="primary" size={["xs", "sm", "md"]} onClick={(e) => editHandler(e, props.priority)} id={props.id}>
                          EDIT
                     </Button>
 
-                    <Button variant="primary" size={["sm", "md"]} onClick={(e) => deleteHandler(e, props.priority)} id={props.id}>
+                    <Button variant="primary" size={["xs", "sm", "md"]} onClick={(e) => deleteHandler(e, props.priority)} id={props.id}>
                          DELETE
                     </Button>
                </Flex>
