@@ -12,29 +12,36 @@ function TaskList() {
      const todoLow = useSelector((state) => state.todoReducer.todoLow);
      const dispatch = useDispatch();
      useEffect(() => {
-          let todoHighLocal = JSON.parse(window.localStorage.getItem("todoHigh"));
-          let todoMediumLocal = JSON.parse(window.localStorage.getItem("todoMedium"));
-          let todoLowLocal = JSON.parse(window.localStorage.getItem("todoLow"));
+          let todoHighLocal = JSON.parse(localStorage.getItem("todoHigh"));
+          let todoMediumLocal = JSON.parse(localStorage.getItem("todoMedium"));
+          let todoLowLocal = JSON.parse(localStorage.getItem("todoLow"));
+          // console.log("todoHighArray1", todoHighLocal, todoMediumLocal, todoLowLocal);
           if (!todoHighLocal && !todoMediumLocal && !todoLowLocal) {
-               window.localStorage.setItem("todoHigh", JSON.stringify([]));
-               window.localStorage.setItem("todoMedium", JSON.stringify([]));
-               window.localStorage.setItem("todoLow", JSON.stringify([]));
+               localStorage.setItem("todoHigh", JSON.stringify([]));
+               localStorage.setItem("todoMedium", JSON.stringify([]));
+               localStorage.setItem("todoLow", JSON.stringify([]));
+               todoHighLocal = JSON.parse(localStorage.getItem("todoHigh"));
+               todoMediumLocal = JSON.parse(localStorage.getItem("todoMedium"));
+               todoLowLocal = JSON.parse(localStorage.getItem("todoLow"));
           }
-          if (todoHighLocal.length !== 0 && todoMediumLocal.length !== 0 && todoLowLocal.length !== 0) {
+
+          // console.log("todoHighArray2", todoHighLocal, todoMediumLocal, todoLowLocal);
+          if (todoHighLocal.length !== 0 || todoMediumLocal.length !== 0 || todoLowLocal.length !== 0) {
+               // console.log("todoHighArray3", todoHighLocal, todoMediumLocal, todoLowLocal);
                dispatch(taskAction.updateAllTodosFromLocalStorage({ priority: "high", arr: todoHighLocal }));
                dispatch(taskAction.updateAllTodosFromLocalStorage({ priority: "medium", arr: todoMediumLocal }));
                dispatch(taskAction.updateAllTodosFromLocalStorage({ priority: "low", arr: todoLowLocal }));
           } else {
-               window.localStorage.setItem("todoHigh", JSON.stringify(todoHigh));
-               window.localStorage.setItem("todoMedium", JSON.stringify(todoMedium));
-               window.localStorage.setItem("todoLow", JSON.stringify(todoLow));
+               localStorage.setItem("todoHigh", JSON.stringify(todoHigh));
+               localStorage.setItem("todoMedium", JSON.stringify(todoMedium));
+               localStorage.setItem("todoLow", JSON.stringify(todoLow));
           }
      }, []);
 
      useEffect(() => {
-          window.localStorage.setItem("todoHigh", JSON.stringify(todoHigh));
-          window.localStorage.setItem("todoMedium", JSON.stringify(todoMedium));
-          window.localStorage.setItem("todoLow", JSON.stringify(todoLow));
+          localStorage.setItem("todoHigh", JSON.stringify(todoHigh));
+          localStorage.setItem("todoMedium", JSON.stringify(todoMedium));
+          localStorage.setItem("todoLow", JSON.stringify(todoLow));
      }, [todoHigh, todoLow, todoMedium]);
 
      return (
