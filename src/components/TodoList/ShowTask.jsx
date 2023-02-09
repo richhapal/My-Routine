@@ -26,7 +26,7 @@ export const ShowTask = (props) => {
                     <Badge>{props.date}</Badge>
                </Flex>
 
-               <Flex gap={[1, 1, 2, 3]}>
+               <Flex gap={[3]} my={2}>
                     <Text flex="1" fontWeight={["semibold", "bold"]}>
                          {props.value}
                     </Text>
