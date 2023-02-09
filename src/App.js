@@ -1,9 +1,8 @@
 import "./App.css";
-import { Fragment } from "react";
 import Navigation from "./components/MainNavigation/Navigation";
-import TaskPanel from "./components/TaskPanel/TaskPanel";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainTodoHandle from "./components/TodoList/MainTodoHandle";
+import TimeFocusHandler from "./components/Time Focus/TimeFocusHandler";
 
 const routers = createBrowserRouter([
      {
@@ -15,16 +14,8 @@ const routers = createBrowserRouter([
                     element: <MainTodoHandle />,
                },
                {
-                    path: "/dailyroutine",
-                    element: <TaskPanel></TaskPanel>,
-               },
-               {
-                    path: "/dailynotes",
-                    element: <TaskPanel></TaskPanel>,
-               },
-               {
-                    path: "/email",
-                    element: <TaskPanel></TaskPanel>,
+                    path: "/timefocus",
+                    element: <TimeFocusHandler />,
                },
           ],
      },

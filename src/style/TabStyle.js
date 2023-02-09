@@ -1,5 +1,9 @@
-import { mode } from "@chakra-ui/theme-tools";
-export const ButtonStyle = {
+// import { tabsAnatomy } from "@chakra-ui/anatomy";
+// import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
+
+// const { defineMultiStyleConfig } = createMultiStyleConfigHelpers(tabsAnatomy.keys);
+
+export const TabStyle = {
      variants: {
           primary: (props) => ({
                bg: "primary",
@@ -9,12 +13,6 @@ export const ButtonStyle = {
                _hover: {
                     bgGradient: "linear(to-br, #E80A89, #F15B2A)",
                },
-          }),
-          secondary: (props) => ({
-               // bg: "#000000",
-               bgGradient: "linear(to-br,blackAlpha.400,blackAlpha.100)",
-               letterSpacing: "2px",
-               color: mode("#000000", "#fff")(props),
           }),
      },
 };

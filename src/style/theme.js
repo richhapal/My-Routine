@@ -1,7 +1,7 @@
 import { extendTheme } from "@chakra-ui/react";
 import "@fontsource/orbitron";
 import { ButtonStyle as Button } from "./ButtonStyle";
-import { Global } from "@emotion/react";
+import { TabStyle as Tab } from "./TabStyle";
 
 const config = {
      initialColorMode: "dark",
@@ -29,6 +29,7 @@ const theme = extendTheme({
      },
      components: {
           Button,
+          Tab,
      },
 });
 
