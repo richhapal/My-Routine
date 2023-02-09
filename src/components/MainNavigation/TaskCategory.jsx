@@ -14,7 +14,7 @@ const TaskCategory = () => {
                               </NavLink>
                          </Box>
                          <Box flex="1" textAlign="center" padding="2">
-                              <NavLink to="dailyroutine" className={({ isActive }) => (isActive ? classes.activeLink : undefined)}>
+                              <NavLink to="timefocus" className={({ isActive }) => (isActive ? classes.activeLink : undefined)}>
                                    Time Focus
                               </NavLink>
                          </Box>
