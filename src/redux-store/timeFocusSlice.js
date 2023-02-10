@@ -13,6 +13,7 @@ const initialState = {
      isTimeRunning: false,
      timeInterval: false,
      showNotification: "",
+     browserPermissionAlert: false,
 };
 
 const timeFocusSlice = createSlice({
@@ -65,7 +66,7 @@ const timeFocusSlice = createSlice({
           updateDefaultTimeAlert(state) {
                let min = Number(state.defaultTimeMinute);
                let sec = Number(state.defaultTimeSecond);
-               console.log(min, sec);
+               // console.log(min, sec);
                if (state.isTimeRunning) {
                     if (min === 0 && sec === 1) {
                          clearInterval(state.timeInterval);
@@ -102,7 +103,7 @@ const timeFocusSlice = createSlice({
           updateLongTimeAlert(state) {
                let min = Number(state.longTimeMinute);
                let sec = Number(state.longTimeSecond);
-               console.log(min, sec);
+               // console.log(min, sec);
                if (state.isTimeRunning) {
                     if (min === 0 && sec === 1) {
                          clearInterval(state.timeInterval);
@@ -136,7 +137,7 @@ const timeFocusSlice = createSlice({
           updateShortTimeAlert(state) {
                let min = Number(state.shortTimeMinute);
                let sec = Number(state.shortTimeSecond);
-               console.log(min, sec);
+               // console.log(min, sec);
                if (state.isTimeRunning) {
                     if (min === 0 && sec === 1) {
                          clearInterval(state.timeInterval);
@@ -177,6 +178,9 @@ const timeFocusSlice = createSlice({
                state.isTimeRunning = false;
                clearInterval(state.timeInterval);
                state.timeInterval = false;
+          },
+          browserPermissionAlert(state) {
+               state.browserPermissionAlert = true;
           },
      },
 });

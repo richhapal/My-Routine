@@ -2,7 +2,7 @@ import "./App.css";
 import Navigation from "./components/MainNavigation/Navigation";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainTodoHandle from "./components/TodoList/MainTodoHandle";
-import TimeFocusHandler from "./components/Time Focus/TimeFocusHandler";
+import TimeFocusHandler from "./components/TimeFocus/TimeFocusHandler";
 
 const routers = createBrowserRouter([
      {

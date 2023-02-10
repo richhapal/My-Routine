@@ -31,8 +31,6 @@ const DefaultTime = () => {
                return;
           }
           NotifyMe();
-
-          console.log("run first");
      }, []);
 
      useEffect(() => {
