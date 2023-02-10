@@ -1,12 +1,14 @@
 import { Box, Button, Flex } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import NotifyMe from "./NotificationAlert";
 import { runningTimer, timeFocusActions } from "../../redux-store/timeFocusSlice";
-
+let first = true;
 const DefaultTime = () => {
      const min = useSelector((state) => state.timeFocusReducer.defaultTimeMinute);
      const sec = useSelector((state) => state.timeFocusReducer.defaultTimeSecond);
      const isTimeRunning = useSelector((state) => state.timeFocusReducer.isTimeRunning);
+     const showNotification = useSelector((state) => state.timeFocusReducer.showNotification);
      const dispatch = useDispatch();
      const startDefaultTimeHandler = () => {
           dispatch(timeFocusActions.updateIsTimeRunning());
@@ -23,7 +25,22 @@ const DefaultTime = () => {
           dispatch(timeFocusActions.stopTimeInterval());
      };
 
-     useEffect(() => {}, [min, sec]);
+     useEffect(() => {
+          if (first) {
+               first = false;
+               return;
+          }
+          NotifyMe();
+
+          console.log("run first");
+     }, []);
+
+     useEffect(() => {
+          if (showNotification) {
+               NotifyMe();
+               const notification = new Notification(showNotification);
+          }
+     }, [min, sec]);
 
      return (
           <>

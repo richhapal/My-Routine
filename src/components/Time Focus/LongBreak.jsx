@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Button, Flex } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { timeFocusActions } from "../../redux-store/timeFocusSlice";
+import NotifyMe from "./NotificationAlert";
 const LongBreak = () => {
      const min = useSelector((state) => state.timeFocusReducer.longTimeMinute);
      const sec = useSelector((state) => state.timeFocusReducer.longTimeSecond);
-
+     const showNotification = useSelector((state) => state.timeFocusReducer.showNotification);
      const isTimeRunning = useSelector((state) => state.timeFocusReducer.isTimeRunning);
      const dispatch = useDispatch();
      const startDefaultTimeHandler = () => {
@@ -22,6 +23,13 @@ const LongBreak = () => {
      const stopDefaultTimeHandler = () => {
           dispatch(timeFocusActions.stopTimeInterval());
      };
+
+     useEffect(() => {
+          if (showNotification) {
+               NotifyMe();
+               const notification = new Notification(showNotification);
+          }
+     }, [min, sec]);
 
      return (
           <>

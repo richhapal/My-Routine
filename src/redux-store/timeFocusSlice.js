@@ -12,6 +12,7 @@ const initialState = {
      longTimeSecond: "00",
      isTimeRunning: false,
      timeInterval: false,
+     showNotification: "",
 };
 
 const timeFocusSlice = createSlice({
@@ -31,6 +32,7 @@ const timeFocusSlice = createSlice({
                     state.isTimeRunning = false;
                     clearInterval(state.timeInterval);
                     state.timeInterval = false;
+                    state.showNotification = "";
                     console.log("default");
                } else if (selector.includes("short")) {
                     state.defaultSelect = false;
@@ -43,6 +45,7 @@ const timeFocusSlice = createSlice({
                     state.isTimeRunning = false;
                     clearInterval(state.timeInterval);
                     state.timeInterval = false;
+                    state.showNotification = "";
                     console.log("short");
                } else {
                     state.defaultSelect = false;
@@ -55,6 +58,7 @@ const timeFocusSlice = createSlice({
                     state.isTimeRunning = false;
                     clearInterval(state.timeInterval);
                     state.timeInterval = false;
+                    state.showNotification = "";
                     console.log("long");
                }
           },
@@ -70,6 +74,9 @@ const timeFocusSlice = createSlice({
                          state.defaultSelect = false;
                          state.shortSelect = true;
                          state.longSelect = false;
+                         state.defaultTimeMinute = "55";
+                         state.defaultTimeSecond = "00";
+                         state.showNotification = "IT IS BREAK TIME";
                     }
                     if (sec === 0) {
                          sec = 60;
@@ -104,6 +111,7 @@ const timeFocusSlice = createSlice({
                          state.defaultSelect = true;
                          state.shortSelect = false;
                          state.longSelect = false;
+                         state.showNotification = "IT IS TIME TO FOCUS AGAIN";
                     }
                     if (sec === 0) {
                          sec = 60;
@@ -137,6 +145,7 @@ const timeFocusSlice = createSlice({
                          state.defaultSelect = true;
                          state.shortSelect = false;
                          state.shortSelect = false;
+                         state.showNotification = "IT IS TIME TO FOCUS AGAIN";
                     }
                     if (sec === 0) {
                          sec = 60;
