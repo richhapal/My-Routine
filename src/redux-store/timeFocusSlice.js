@@ -67,8 +67,9 @@ const timeFocusSlice = createSlice({
                          clearInterval(state.timeInterval);
                          state.isTimeRunning = false;
                          console.log("Please Take Break");
-                         state.defaultTimeMinute = "01";
-                         state.defaultTimeSecond = "00";
+                         state.defaultSelect = false;
+                         state.shortSelect = true;
+                         state.longSelect = false;
                     }
                     if (sec === 0) {
                          sec = 60;
@@ -89,6 +90,72 @@ const timeFocusSlice = createSlice({
 
                     state.defaultTimeMinute = min.toString();
                     state.defaultTimeSecond = sec.toString();
+               }
+          },
+          updateLongTimeAlert(state) {
+               let min = Number(state.longTimeMinute);
+               let sec = Number(state.longTimeSecond);
+               console.log(min, sec);
+               if (state.isTimeRunning) {
+                    if (min === 0 && sec === 1) {
+                         clearInterval(state.timeInterval);
+                         state.isTimeRunning = false;
+                         console.log("Please Focus!!!!!!!!!!");
+                         state.defaultSelect = true;
+                         state.shortSelect = false;
+                         state.longSelect = false;
+                    }
+                    if (sec === 0) {
+                         sec = 60;
+                         sec--;
+                         if (min !== 0) {
+                              min--;
+                         }
+                    } else {
+                         sec--;
+                    }
+                    if (sec.toString().length == 1) {
+                         sec = "0" + sec;
+                    }
+                    if (min.toString().length == 1) {
+                         min = "0" + min;
+                    }
+
+                    state.longTimeMinute = min.toString();
+                    state.longTimeSecond = sec.toString();
+               }
+          },
+          updateShortTimeAlert(state) {
+               let min = Number(state.shortTimeMinute);
+               let sec = Number(state.shortTimeSecond);
+               console.log(min, sec);
+               if (state.isTimeRunning) {
+                    if (min === 0 && sec === 1) {
+                         clearInterval(state.timeInterval);
+                         state.isTimeRunning = false;
+                         console.log("Please Focus!!!!!!!!!!");
+                         state.defaultSelect = true;
+                         state.shortSelect = false;
+                         state.shortSelect = false;
+                    }
+                    if (sec === 0) {
+                         sec = 60;
+                         sec--;
+                         if (min !== 0) {
+                              min--;
+                         }
+                    } else {
+                         sec--;
+                    }
+                    if (sec.toString().length == 1) {
+                         sec = "0" + sec;
+                    }
+                    if (min.toString().length == 1) {
+                         min = "0" + min;
+                    }
+
+                    state.shortTimeMinute = min.toString();
+                    state.shortTimeSecond = sec.toString();
                }
           },
           updateIsTimeRunning(state) {

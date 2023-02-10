@@ -37,9 +37,11 @@ export const TimeFocus = () => {
                               </Button>
                          </ButtonGroup>
                     </Box>
-                    {defaultSelect && <DefaultTime />}
-                    {shortSelect && <ShortBreak />}
-                    {longSelect && <LongBreak />}
+                    <Box fontFamily="Orbitron">
+                         {defaultSelect && <DefaultTime />}
+                         {shortSelect && <ShortBreak />}
+                         {longSelect && <LongBreak />}
+                    </Box>
                </Box>
           </Container>
      );

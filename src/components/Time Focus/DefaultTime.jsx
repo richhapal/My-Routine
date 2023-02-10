@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { runningTimer, timeFocusActions } from "../../redux-store/timeFocusSlice";
 
 const DefaultTime = () => {
-     const MM = useSelector((state) => state.timeFocusReducer.defaultTimeMinute);
-     const SS = useSelector((state) => state.timeFocusReducer.defaultTimeSecond);
+     const min = useSelector((state) => state.timeFocusReducer.defaultTimeMinute);
+     const sec = useSelector((state) => state.timeFocusReducer.defaultTimeSecond);
      const isTimeRunning = useSelector((state) => state.timeFocusReducer.isTimeRunning);
      const dispatch = useDispatch();
      const startDefaultTimeHandler = () => {
@@ -23,15 +23,15 @@ const DefaultTime = () => {
           dispatch(timeFocusActions.stopTimeInterval());
      };
 
-     useEffect(() => {}, [MM, SS]);
+     useEffect(() => {}, [min, sec]);
 
      return (
           <>
                <Box my={5}>
-                    <Flex justifyContent="center" fontSize={["8xl", "9xl"]} fontWeight="bold">
-                         <span>{MM}</span>
+                    <Flex justifyContent="center" fontSize={["6xl", "8xl"]} fontWeight="bold">
+                         <span>{min}</span>
                          <span>:</span>
-                         <span>{SS}</span>
+                         <span>{sec}</span>
                     </Flex>
                </Box>
                <Box>
