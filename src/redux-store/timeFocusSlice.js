@@ -10,7 +10,8 @@ const initialState = {
      shortTimeSecond: "00",
      longTimeMinute: "15",
      longTimeSecond: "00",
-     // timeIntervalPause:
+     isTimeRunning: false,
+     timeInterval: false,
 };
 
 const timeFocusSlice = createSlice({
@@ -23,31 +24,83 @@ const timeFocusSlice = createSlice({
                     state.defaultSelect = true;
                     state.shortSelect = false;
                     state.longSelect = false;
+                    state.shortTimeMinute = "05";
+                    state.shortTimeSecond = "00";
+                    state.longTimeMinute = "15";
+                    state.longTimeSecond = "00";
+                    state.isTimeRunning = false;
+                    clearInterval(state.timeInterval);
+                    state.timeInterval = false;
                     console.log("default");
                } else if (selector.includes("short")) {
                     state.defaultSelect = false;
                     state.shortSelect = true;
                     state.longSelect = false;
+                    state.defaultTimeMinute = "55";
+                    state.defaultTimeSecond = "00";
+                    state.longTimeMinute = "15";
+                    state.longTimeSecond = "00";
+                    state.isTimeRunning = false;
+                    clearInterval(state.timeInterval);
+                    state.timeInterval = false;
                     console.log("short");
                } else {
                     state.defaultSelect = false;
                     state.shortSelect = false;
                     state.longSelect = true;
+                    state.defaultTimeMinute = "55";
+                    state.defaultTimeSecond = "00";
+                    state.shortTimeMinute = "05";
+                    state.shortTimeSecond = "00";
+                    state.isTimeRunning = false;
+                    clearInterval(state.timeInterval);
+                    state.timeInterval = false;
                     console.log("long");
                }
           },
-          updateDefaultTimeAlert(state, actions) {
-               let min = actions.payload.min.toString();
-               let sec = actions.payload.sec.toString();
-               if (min.length == 1) {
-                    min = "0" + min;
+          updateDefaultTimeAlert(state) {
+               let min = Number(state.defaultTimeMinute);
+               let sec = Number(state.defaultTimeSecond);
+               console.log(min, sec);
+               if (state.isTimeRunning) {
+                    if (min === 0 && sec === 1) {
+                         clearInterval(state.timeInterval);
+                         state.isTimeRunning = false;
+                         console.log("Please Take Break");
+                         state.defaultTimeMinute = "01";
+                         state.defaultTimeSecond = "00";
+                    }
+                    if (sec === 0) {
+                         sec = 60;
+                         sec--;
+                         if (min !== 0) {
+                              min--;
+                         }
+                    } else {
+                         sec--;
+                    }
+
+                    if (sec.toString().length == 1) {
+                         sec = "0" + sec;
+                    }
+                    if (min.toString().length == 1) {
+                         min = "0" + min;
+                    }
+
+                    state.defaultTimeMinute = min.toString();
+                    state.defaultTimeSecond = sec.toString();
                }
-               if (sec.length == 1) {
-                    sec = "0" + sec;
-               }
-               state.defaultTimeMinute = min.toString();
-               state.defaultTimeSecond = sec.toString();
-               // console.log(actions.payload.min, actions.payload.sec);
+          },
+          updateIsTimeRunning(state) {
+               state.isTimeRunning = true;
+          },
+          startTimeInterval(state, actions) {
+               state.timeInterval = actions.payload;
+          },
+          stopTimeInterval(state) {
+               state.isTimeRunning = false;
+               clearInterval(state.timeInterval);
+               state.timeInterval = false;
           },
      },
 });
@@ -57,9 +110,6 @@ export const runningTimer = (MM, SS) => {
           let min = MM * 1;
           let sec = SS * 1;
 
-          if (sec === 0 && min === 0) {
-               alert("time Completed");
-          }
           if (sec !== 0) {
                sec--;
           } else {
