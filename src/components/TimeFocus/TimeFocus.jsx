@@ -9,10 +9,7 @@ import { timeFocusActions } from "../../redux-store/timeFocusSlice";
 
 export const TimeFocus = () => {
      const [isSmallerThan508] = useMediaQuery("(max-width: 508px)");
-     const defaultSelect = useSelector((state) => state.timeFocusReducer.defaultSelect);
-     const shortSelect = useSelector((state) => state.timeFocusReducer.shortSelect);
-     const longSelect = useSelector((state) => state.timeFocusReducer.longSelect);
-
+     const { defaultSelect, shortSelect, longSelect } = useSelector((state) => state.timeFocusReducer);
      const dispatch = useDispatch();
 
      const selectHandler = (e) => {

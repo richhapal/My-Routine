@@ -89,10 +89,10 @@ const timeFocusSlice = createSlice({
                          sec--;
                     }
 
-                    if (sec.toString().length == 1) {
+                    if (sec.toString().length === 1) {
                          sec = "0" + sec;
                     }
-                    if (min.toString().length == 1) {
+                    if (min.toString().length === 1) {
                          min = "0" + min;
                     }
 
@@ -123,10 +123,10 @@ const timeFocusSlice = createSlice({
                     } else {
                          sec--;
                     }
-                    if (sec.toString().length == 1) {
+                    if (sec.toString().length === 1) {
                          sec = "0" + sec;
                     }
-                    if (min.toString().length == 1) {
+                    if (min.toString().length === 1) {
                          min = "0" + min;
                     }
 
@@ -157,10 +157,10 @@ const timeFocusSlice = createSlice({
                     } else {
                          sec--;
                     }
-                    if (sec.toString().length == 1) {
+                    if (sec.toString().length === 1) {
                          sec = "0" + sec;
                     }
-                    if (min.toString().length == 1) {
+                    if (min.toString().length === 1) {
                          min = "0" + min;
                     }
 
@@ -184,27 +184,6 @@ const timeFocusSlice = createSlice({
           },
      },
 });
-
-export const runningTimer = (MM, SS) => {
-     return (dispatch) => {
-          let min = MM * 1;
-          let sec = SS * 1;
-
-          if (sec !== 0) {
-               sec--;
-          } else {
-               console.log("else true-------");
-               if (min !== 0) {
-                    min--;
-               }
-               sec = 60;
-               sec--;
-          }
-          console.log(min, sec);
-          dispatch(timeFocusActions.updateDefaultTimeAlert({ min: min, sec: sec }));
-          console.log("update", typeof sec, typeof min);
-     };
-};
 
 export const timeFocusActions = timeFocusSlice.actions;
 export default timeFocusSlice.reducer;

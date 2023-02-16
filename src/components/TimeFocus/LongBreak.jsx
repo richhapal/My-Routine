@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { timeFocusActions } from "../../redux-store/timeFocusSlice";
 import NotifyMe from "./NotificationAlert";
 const LongBreak = () => {
-     const min = useSelector((state) => state.timeFocusReducer.longTimeMinute);
-     const sec = useSelector((state) => state.timeFocusReducer.longTimeSecond);
-     const showNotification = useSelector((state) => state.timeFocusReducer.showNotification);
-     const isTimeRunning = useSelector((state) => state.timeFocusReducer.isTimeRunning);
+     const { longTimeMinute: min, longTimeSecond: sec, showNotification, isTimeRunning } = useSelector((state) => state.timeFocusReducer);
+     // const sec = useSelector((state) => state.timeFocusReducer.longTimeSecond);
+     // const showNotification = useSelector((state) => state.timeFocusReducer.showNotification);
+     // const isTimeRunning = useSelector((state) => state.timeFocusReducer.isTimeRunning);
      const dispatch = useDispatch();
      const startDefaultTimeHandler = () => {
           dispatch(timeFocusActions.updateIsTimeRunning());

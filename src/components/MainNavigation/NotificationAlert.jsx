@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateNotification } from "../../redux-store/notificatonAlertSlice";
 
 const NotificationAlert = () => {
-     const showNotification = useSelector((state) => state.notificationAlertReducer.showNotification);
-     const browserPermission = useSelector((state) => state.timeFocusReducer.browserPermissionAlert);
+     const { showNotification, browserPermissionAlert: browserPermission } = useSelector((state) => state.notificationAlertReducer);
      const dispatch = useDispatch();
      useEffect(() => {
           setTimeout(() => {

@@ -5,10 +5,7 @@ import NotifyMe from "./NotificationAlert";
 import { runningTimer, timeFocusActions } from "../../redux-store/timeFocusSlice";
 let first = true;
 const DefaultTime = () => {
-     const min = useSelector((state) => state.timeFocusReducer.defaultTimeMinute);
-     const sec = useSelector((state) => state.timeFocusReducer.defaultTimeSecond);
-     const isTimeRunning = useSelector((state) => state.timeFocusReducer.isTimeRunning);
-     const showNotification = useSelector((state) => state.timeFocusReducer.showNotification);
+     const { defaultTimeMinute: min, defaultTimeSecond: sec, isTimeRunning, showNotification } = useSelector((state) => state.timeFocusReducer);
      const dispatch = useDispatch();
      const startDefaultTimeHandler = () => {
           dispatch(timeFocusActions.updateIsTimeRunning());
